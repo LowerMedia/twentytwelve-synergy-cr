@@ -509,7 +509,7 @@
             <style type="text/css">
 
                 html {
-                    margin-top: 28px !important;
+                    margin-top: 0px !important;
                 }
 
                 .admin-bar {
