@@ -55,6 +55,11 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
 
+			<?php if ( is_active_sidebar( 'bottom-header-widget' ) ) : ?>
+				<div id="bottom-header-widget" class="bottom-header-widget widget-area" role="complementary">
+					<?php dynamic_sidebar( 'bottom-header-widget' ); ?>
+				</div><!-- #bottom-header-widget -->
+			<?php endif; ?>
 			
 		</header><!-- #masthead -->
 		
