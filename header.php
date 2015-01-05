@@ -36,9 +36,9 @@
 
 	<div id="page" class="hfeed site">
 		
-		<header id="masthead" class="site-header" role="banner">
+		<header id="masthead" class="site-header left-column" role="banner">
 
-			<hgroup>
+			<hgroup class="hgroup">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
@@ -63,4 +63,4 @@
 			
 		</header><!-- #masthead -->
 		
-		<div id="main" class="wrapper">
+		<div id="main" class="wrapper main-wrapper right-column">
