@@ -39,9 +39,40 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 			background: none;
 		}
 
+	.left-column {
+		width: 30%;
+	}
+
+	.right-column {
+		width:60%;
+	}
+
+	.left-column,
+	.right-column {
+		vertical-align: top;
+		display: inline-block;
+	}
+
 /* -- HEADER -- */
 
+	.site-header {
+		padding: 0 10px;
+	}
+
+	.hgroup { 
+		height:0;
+		width:0;
+		visibility: hidden; 
+	}
+
+	.site-header .widget-area {
+		float:none;
+		width:100%;
+	}
+
 /* -- NAVIGATION -- */
+	
+	.main-navigation li {width:100%;}
 
 /* -- SIDEBAR -- */
 
