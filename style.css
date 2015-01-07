@@ -88,13 +88,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 			max-width: 80%;
 		}
 
-	.left-column {
-		width: 25%;
-	}
+	.left-column { width: 25%; }
 
-	.right-column {
-		width:65%;
-	}
+	.right-column { width:65%; }
 
 	.left-column,
 	.right-column {
@@ -104,9 +100,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* -- HEADER -- */
 
-	.site-header {
-		padding: 0 40px 0 0;
-	}
+	.site-header { padding: 0 3% 0 0; }
 
 	.hgroup { 
 		height:0;
@@ -114,7 +108,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		visibility: hidden; 
 	}
 
-	.site-header .header-image {box-shadow: none;}
+	.site-header .header-image { box-shadow: none; }
 
 	.site-header .widget-area {
 		float:none;
@@ -141,22 +135,22 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.widget-area hr {display:none;}
 
-	.main-wrapper #wpcr_respond_1 {display:none;}
+	.main-wrapper #wpcr_respond_1 { display:none; }
 
-	.page-id-11 #wpcr_respond_1 {display:block;}
+	.page-id-11 #wpcr_respond_1 { display:block; }
 
 /* -- CONTENT -- */
 
 	.main-wrapper {
 		clear: both;
 		margin: 20px 0;
-		padding: 0 40px;
+		padding: 0 3%;
 		background-color: white;
 		border-radius: 2em;
 		box-shadow: 0 0 2px 1px #afc9bc;
 	}
 
-	.site-content article {border:none;}
+	.site-content article { border:none; }
 
 /* -- FOOTER -- */
 
@@ -166,5 +160,39 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	}
 
 /* -- MEDIA QUERIES -- */
+
+	.mobile-scheduler {display:none;}
+
+	@media screen and (max-width: 1400px) {
+		body .site { max-width: 100%; }
+	}
+
+	@media screen and (max-width: 1024px) {
+		.mobile-scheduler {display:block;}
+		.desktop-scheduler {display:none;}
+
+		.left-column,
+		.right-column { 
+			width: 95%;
+			margin: 20px auto;
+			display: block; 
+		}
+
+		.left-column,
+		.main-navigation .menu-item { text-align:center; }
+
+		.site-header .widget-area {
+			width: 50%;
+			margin: 10px auto;
+		}
+	}
+
+	@media screen and (max-width: 960px) {
+		
+	}
+
+	@media screen and (max-width: 300px) {
+
+	}
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- END -- -- -- -- -- -- -- -- -- -- -- -- */
