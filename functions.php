@@ -429,12 +429,30 @@
 #
 */
 
+    function lowermedia_widgets_destroy() {
+
+        // Unregister some of the TwentyTwelve sidebars
+        unregister_sidebar( 'sidebar-1' );
+        unregister_sidebar( 'sidebar-2' );
+        unregister_sidebar( 'sidebar-3' );
+    }
+    add_action( 'widgets_init', 'lowermedia_widgets_destroy', 11);
+
     function lowermedia_widgets_init() {
 
         register_sidebar( array(
-            'name' => 'Bottom Header Widget',
+            'name' => 'Bottom Sidebar Widget Area',
             'id' => 'bottom-header-widget',
             'before_widget' => '<div id="bottom-header-widget" class="bottom-header-widget">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="rounded">',
+            'after_title' => '</h2>',
+        ) );
+
+        register_sidebar( array(
+            'name' => 'Bottom Content Widget Area',
+            'id' => 'bottom-content-widget',
+            'before_widget' => '<div id="bottom-content-widget" class="bottom-content-widget">',
             'after_widget' => '</div>',
             'before_title' => '<h2 class="rounded">',
             'after_title' => '</h2>',
