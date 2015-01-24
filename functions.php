@@ -363,16 +363,6 @@
            /*change sidebar icon for testimonials, staff, tips, videos */
             #menu-posts-testimonials .dashicons-admin-post:before,
             #menu-posts-testimonials .dashicons-format-standard:before { content:"\f155"; }
-
-            #menu-posts-staff .dashicons-admin-post:before,
-            #menu-posts-staff .dashicons-format-standard:before { content:"\f307"; }
-
-            #menu-posts-carcarevideos .dashicons-admin-post:before,
-            #menu-posts-carcarevideos .dashicons-format-standard:before { content:"\f126"; }
-
-            #menu-posts-carcaretips .dashicons-admin-post:before,
-            #menu-posts-carcaretips .dashicons-format-standard:before { content:"\f339"; }
-
            
            /*change admin menu coloring*/ 
             #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap { /*background-color: #043789;*/ }
