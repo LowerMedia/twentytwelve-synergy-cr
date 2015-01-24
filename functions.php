@@ -6,30 +6,18 @@
 #
 */
 
-    // function lowermedia_scripts() {
-        // wp_enqueue_script(
-        //     'custom-js',
-        //     get_stylesheet_directory_uri() . '/custom.js',
-        //     array( 'jquery' )
-        // );
+    function lowermedia_scripts() {
 
-        // if (is_front_page()) {
-        //     wp_enqueue_script(
-        //         'jssor',
-        //         get_stylesheet_directory_uri() . '/js/jssor.js',
-        //         array( 'jquery' )
-        //     );
+        if (is_front_page()) {
+            wp_enqueue_script(
+                'custom-js',
+                get_stylesheet_directory_uri() . '/custom.js',
+                array( 'jquery' )
+            );
+        }
 
-        //     wp_enqueue_script(
-        //         'jssorslider',
-        //         get_stylesheet_directory_uri() . '/js/jssor.slider.js',
-        //         array( 'jquery' )
-        //     );
-        // }
-
-        // wp_enqueue_script('jquery-ui-accordion');
-    // }
-    // add_action( 'wp_enqueue_scripts', 'lowermedia_scripts' );
+    }
+    add_action( 'wp_enqueue_scripts', 'lowermedia_scripts' );
 
     // function lowermedia_enqueue_parent_style() {
     //     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
