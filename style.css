@@ -140,7 +140,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.page-id-11 #wpcr_respond_1 { display:block; }
 
-	.hreview {display:none;}
+	.hreview { display:none; } /*custom.js will make this visible when the page is loaded (on pageload)*/
 
 /* -- CONTENT -- */
 
