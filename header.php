@@ -55,6 +55,15 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
 
+			<div class='desktop-scheduler'><?php echo do_shortcode( '[schedule_now_button align="left" style="button9"]' ); ?></div>
+			<div class='mobile-scheduler'><?php echo do_shortcode( '[schedule_now_button align="center" style="button9"]' ); ?></div>
+
+			<div class='testimonial-wrap'>
+				<?php echo do_shortcode('[WPCR_SHOW POSTID="11" NUM="4" SNIPPET="80" MORE="Continue reading..." HIDECUSTOM="1" HIDERESPONSE="1"]'); ?>
+				<br />
+				<a href="/reviews">More Testimonials</a>
+			</div>
+
 			<?php if ( is_active_sidebar( 'bottom-header-widget' ) ) : ?>
 				<div id="bottom-header-widget" class="bottom-header-widget widget-area" role="complementary">
 					<?php dynamic_sidebar( 'bottom-header-widget' ); ?>
