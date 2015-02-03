@@ -48,7 +48,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		background-image: url(http://subtlepatterns.com/patterns/contemporary_china_2.png);
 	}
 
-	html { visibility: hidden; }
+	/*html { visibility: hidden; }*/
 
 	h1 {
 		font-weight: 400;
