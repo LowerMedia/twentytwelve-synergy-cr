@@ -27,6 +27,6 @@ jQuery(document).ready(function() {
 	jQuery('.hreview').show();
 });
 
-jQuery(document).ready(function() {
-	document.getElementsByTagName("html")[0].style.visibility = "visible";
-});
+// jQuery(document).ready(function() {
+// 	document.getElementsByTagName("html")[0].style.visibility = "visible";
+// });
