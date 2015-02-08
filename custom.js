@@ -5,6 +5,12 @@
  */
 
 jQuery(function() {
+	console.log(document.URL);
+
+	if(window.location.origin == window.location.href){
+		console.log('this is the home page');
+	}
+
 	//set var to random id by calculating the number of entries and randomly picking one number
 	var show_review_id = Math.floor((Math.random() * jQuery(".hreview").size()) + 1);
 	var count = 1;
