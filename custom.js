@@ -10,19 +10,19 @@ jQuery(function() {
 	console.log('WindowLocHref: '+window.location.href);
 	if(window.location.origin+'/' === window.location.href){
 		console.log('this is the home page');
-	
+	}
 
 	//set var to random id by calculating the number of entries and randomly picking one number
 	var show_review_id = Math.floor((Math.random() * jQuery(".hreview").size()) + 1);
 	var count = 1;
-	jQuery(".hreview").each(function(){
+	jQuery(".testimonial-wrap .hreview").each(function(){
 		//if the current id does not match the number, remove it
 		if( count !== show_review_id ){
 			jQuery(this).remove();
 		}
 		count++;
 	});
-	}
+	
 });
 
 /**
