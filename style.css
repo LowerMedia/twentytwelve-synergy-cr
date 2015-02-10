@@ -189,7 +189,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	.bottom-content-widget {
 		margin: 10px 2%;
 		background-color: white;
-		border-radius: 2em;
+		border-radius: 1em;
 		box-shadow: 0 0 2px 1px #afc9bc;
 		width: 40%;
 		display: inline-block;
@@ -209,8 +209,19 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		line-height: 1.6;
 		margin: 0 0 1.714285714rem;
 		border-radius: .8em .8em 0 0;
-		padding:10px 0;
+		padding:10px 2px;
+		text-transform: uppercase;
+		color: white;
+		text-align: center;
+		background-color: #6FCCDD;
 	}
+
+	.schedulicity-wrap div:first-of-type {
+		border: none !important;
+		max-width: initial !important;
+	}
+
+	.schedulicity-wrap div:first-of-type iframe { height: 1445px !important; }
 
 /* -- FOOTER -- */
 
