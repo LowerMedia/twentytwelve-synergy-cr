@@ -9,7 +9,7 @@
  * @since Twenty Twelve 1.0
  */
 ?>
-	</div><!-- #main .wrapper -->
+
 	<?php if ( is_front_page() ) : ?>
 		<?php if ( is_active_sidebar( 'bottom-header-widget' ) ) : ?>
 			<div id="bottom-content-widget-wrap" class="bottom-content-widget-wrap widget-area-wrap" role="complementary">
@@ -17,6 +17,9 @@
 			</div><!-- #bottom-header-widget -->
 		<?php endif; ?>
 	<?php endif; ?>
+	
+	</div><!-- #main .wrapper -->
+	
 </div><!-- #page -->
 
 <footer id="colophon" role="contentinfo">
