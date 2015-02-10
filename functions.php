@@ -377,11 +377,24 @@ add_theme_support( 'custom-header', $defaults );
             body {font-family: Futura, "Trebuchet MS", Arial, sans-serif;}
 
            /*change sidebar icon for testimonials, staff, tips, videos */
-            #menu-posts-testimonials .dashicons-admin-post:before,
-            #menu-posts-testimonials .dashicons-format-standard:before { content:"\f155"; }
+            #toplevel_page_wpcr_view_reviews .dashicons-before img { display:none; }
+            #toplevel_page_wpcr_view_reviews .dashicons-before:before,
+            #toplevel_page_wpcr_view_reviews .dashicons-before:before { content:"\f155"; }
+
+            #menu-posts-therapists .dashicons-admin-post:before,
+            #menu-posts-therapists .dashicons-format-standard:before { content:"\f307"; }
            
            /*change admin menu coloring*/ 
-            #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap { /*background-color: #043789;*/ }
+            #adminmenu, #adminmenu .wp-submenu, 
+            #adminmenuback, #adminmenuwrap { /*background-color: #043789;*/ background-color: #166936; }
+
+            #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+            #adminmenu .wp-menu-arrow, 
+            #adminmenu .wp-menu-arrow div,
+            #adminmenu li.current a.menu-top,
+            #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+            .folded #adminmenu li.current.menu-top,
+            .folded #adminmenu li.wp-has-current-submenu { background-color: #6FCCDD; }
 
             #adminmenu .wp-submenu a {color: rgba(249,190,25,0.6);}
 
@@ -551,6 +564,9 @@ add_theme_support( 'custom-header', $defaults );
                 #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper { bottom: 28px; }
 
                 #wp-admin-bar-wp-logo { display: none; }
+
+                #menu-posts-therapists .dashicons-admin-post:before,
+                #menu-posts-therapists .dashicons-format-standard:before { content:"\f307"; }
             </style>'
         ;
     }
