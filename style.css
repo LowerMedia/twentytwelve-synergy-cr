@@ -50,10 +50,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	/*html { visibility: hidden; }*/
 
-	.entry-title {
+	.entry-title,
+	.archive-title {
 		font-weight: 400;
 		color: #016836;
 		font-size: 22px;
+		text-align: center;
 	}
 
 	h2,h3,h4,h5,h6 { 
@@ -93,7 +95,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.left-column { width: 25%; }
 
-	.right-column { width:65%; }
+	.right-column { width:70%; }
 
 	.left-column,
 	.right-column {
@@ -120,6 +122,11 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	.site-header .widget-area {
 		float:none;
 		width:100%;
+	}
+
+	.site-header h2 {
+		color: #166936;
+		font-size: 20px;
 	}
 
 /* -- NAVIGATION -- */
@@ -150,10 +157,16 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.testimonial-wrap {
 		min-height: 135px;
+		max-width: 300px;
 		margin: 10px 0;
 	}
 
 /* -- CONTENT -- */
+
+	body.template-front-page .site-content,
+	body.full-width .site-content {
+		width: 90%;
+	}
 
 	.site-content {
 		clear: both;
@@ -177,23 +190,22 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		background:#EFF6F7;
 	}
 
-	.site-content article { border:none; }
+	.site-content article { border:none; margin-bottom: 0; }
 
 	.bottom-content-widget-wrap {
-		margin-left:28%;
 		float:none;
 		width:auto;
 		text-align: center;
 	}
 
 	.bottom-content-widget {
-		margin: 10px 2%;
+		margin: 10px;
 		background-color: white;
 		border-radius: 1em;
 		box-shadow: 0 0 2px 1px #afc9bc;
-		width: 40%;
+		width: 30%;
 		display: inline-block;
-		min-height: 200px;
+		min-height: 225px;
 		vertical-align: top;
 	}
 
@@ -209,11 +221,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		line-height: 1.6;
 		margin: 0 0 1.714285714rem;
 		border-radius: .8em .8em 0 0;
-		padding:10px 2px;
+		padding:10px 20px;
 		text-transform: uppercase;
 		color: white;
 		text-align: center;
 		background-color: #6FCCDD;
+		min-height:60px;
 	}
 
 	.schedulicity-wrap div:first-of-type {
@@ -222,6 +235,46 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	}
 
 	.schedulicity-wrap div:first-of-type iframe { height: 1445px !important; }
+
+	.featured-img-wrap {
+		display: inline-block;
+		float: left;
+		margin: 0 15px;
+	}
+
+	.featured-img-wrap img {
+		border-radius: 3px;
+		box-shadow: 0 1px 4px rgba(0,0,0,.2);
+	}
+
+	.post-type-archive-therapists .entry-title,
+	.blue-rounded-header {
+		background: #6FCCDD;
+		text-align: center;
+		padding: 10px 0;
+		border-radius: 5px 5px 0 0;
+		border-bottom: 5px solid white;
+	}
+
+	.post-type-archive-therapists .entry-title { color: white; }
+
+	.post-type-archive-therapists .type-therapists { margin-bottom:0; }
+
+	.front-page-custom-image-holder {
+		text-align: center;
+		display: block;
+		width: 100%;
+	}
+
+	.front-page-custom-image-holder .fpci-div {
+		width: 32%;
+		display: inline-block;
+	}
+
+	.front-page-custom-image-holder .fpci-div img {
+		height: 165px;
+		width: 250px;
+	}
 
 /* -- FOOTER -- */
 
@@ -252,9 +305,20 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		.left-column,
 		.main-navigation .menu-item { text-align:center; }
 
+		.site-header h2 {
+			text-align: center;
+			margin-top:5px;
+		}
+
 		.site-header .widget-area {
 			width: 50%;
 			margin: 10px auto;
+		}
+
+		.testimonial-wrap { 
+			margin:10px auto;
+			display:block;
+			text-align: center; 
 		}
 	}
 
