@@ -63,35 +63,36 @@ add_theme_support( 'custom-header', $defaults );
      *
      **/
 
-    // function lm_custom_post_type_creator($post_type_name, $description, $public, $menu_position, $supports, $has_archive, $irreg_plural) {
-    //   if ($irreg_plural) {$plural = 's';} else {$plural = '';}
-    //   $labels = array(
-    //     'name'               => _x( $post_type_name, 'post type general name' ),
-    //     'singular_name'      => _x( strtolower($post_type_name), 'post type singular name' ),
-    //     'add_new'            => _x( 'Add New', 'book' ),
-    //     'add_new_item'       => __( 'Add New '.$post_type_name),
-    //     'edit_item'          => __( 'Edit '.$post_type_name ),
-    //     'new_item'           => __( 'New '.$post_type_name ),
-    //     'all_items'          => __( 'All '.$post_type_name.$plural ),
-    //     'view_item'          => __( 'View '.$post_type_name ),
-    //     'search_items'       => __( 'Search'.$post_type_name.$plural ),
-    //     'not_found'          => __( 'No '.$post_type_name.$plural.' found' ),
-    //     'not_found_in_trash' => __( 'No '.$post_type_name.$plural.' found in the Trash' ), 
-    //     'parent_item_colon'  => '',
-    //     'menu_name'          => $post_type_name
-    //   );
-    //   $args = array(
-    //     'labels'        => $labels,
-    //     'description'   => $description,
-    //     'public'        => $public,
-    //     'menu_position' => $menu_position,
-    //     'supports'      => $supports,
-    //     'has_archive'   => $has_archive,
-    //   );
-    //   register_post_type( $post_type_name, $args ); 
-    // }
+    function lm_custom_post_type_creator($post_type_name, $description, $public, $menu_position, $supports, $has_archive, $irreg_plural, $custom_slug) {
+      if ($irreg_plural) {$plural = 's';} else {$plural = '';}
+      $labels = array(
+        'name'               => _x( $post_type_name, 'post type general name' ),
+        'singular_name'      => _x( strtolower($post_type_name), 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'book' ),
+        'add_new_item'       => __( 'Add New '.$post_type_name),
+        'edit_item'          => __( 'Edit '.$post_type_name ),
+        'new_item'           => __( 'New '.$post_type_name ),
+        'all_items'          => __( 'All '.$post_type_name.$plural ),
+        'view_item'          => __( 'View '.$post_type_name ),
+        'search_items'       => __( 'Search'.$post_type_name.$plural ),
+        'not_found'          => __( 'No '.$post_type_name.$plural.' found' ),
+        'not_found_in_trash' => __( 'No '.$post_type_name.$plural.' found in the Trash' ), 
+        'parent_item_colon'  => '',
+        'menu_name'          => $post_type_name
+      );
+      $args = array(
+        'labels'        => $labels,
+        'description'   => $description,
+        'public'        => $public,
+        'menu_position' => $menu_position,
+        'supports'      => $supports,
+        'has_archive'   => $has_archive,
+        'rewrite'       => array( 'slug' => $custom_slug )
+      );
+      register_post_type( $post_type_name, $args ); 
+    }
     // add_action( 'init', lm_custom_post_type_creator('Testimonials', 'Holds our testimonials', true, 4, array( 'title', 'editor', 'thumbnail' ), true, false));
-    // add_action( 'init', lm_custom_post_type_creator('Staff', 'Holds our staff specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false));
+    add_action( 'init', lm_custom_post_type_creator('Therapists', 'Holds our therapists specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false, 'massage-therapists'));
     // add_action( 'init', lm_custom_post_type_creator('Car Care Tips', 'Holds our car care tips.', true, 6, array( 'title', 'editor', 'thumbnail', 'excerpt' ), true, false));
     // add_action( 'init', lm_custom_post_type_creator('Car Care Videos', 'Holds our car care videos.', true, 7, array( 'title', 'editor', 'thumbnail' ), true, false));
 
@@ -574,6 +575,89 @@ add_theme_support( 'custom-header', $defaults );
 */
 
     add_filter('widget_text', 'do_shortcode');
+
+/*
+#
+#   EXCERPT LENGTH
+#
+*/
+
+function custom_excerpt_length( $length ) {
+    return 10000;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function custom_excerpt_more( $length ) {
+    return '';
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more', 999 );
+
+function wpse_allowedtags() {
+    // Add custom tags to this string
+        return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<video>,<audio>'; 
+    }
+
+if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) : 
+
+    function wpse_custom_wp_trim_excerpt($wpse_excerpt) {
+    $raw_excerpt = $wpse_excerpt;
+        if ( '' == $wpse_excerpt ) {
+
+            $wpse_excerpt = get_the_content('');
+            $wpse_excerpt = strip_shortcodes( $wpse_excerpt );
+            $wpse_excerpt = apply_filters('the_content', $wpse_excerpt);
+            $wpse_excerpt = str_replace(']]>', ']]&gt;', $wpse_excerpt);
+            $wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
+
+            //Set the excerpt word count and only break after sentence is complete.
+                $excerpt_word_count = 75;
+                $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+                $tokens = array();
+                $excerptOutput = '';
+                $count = 0;
+
+                // Divide the string into tokens; HTML tags, or words, followed by any whitespace
+                preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $wpse_excerpt, $tokens);
+
+                foreach ($tokens[0] as $token) { 
+
+                    if ($count >= $excerpt_length && preg_match('/[\,\;\?\.\!]\s*$/uS', $token)) { 
+                    // Limit reached, continue until , ; ? . or ! occur at the end
+                        $excerptOutput .= trim($token);
+                        break;
+                    }
+
+                    // Add words to complete sentence
+                    $count++;
+
+                    // Append what's left of the token
+                    $excerptOutput .= $token;
+                }
+
+            $wpse_excerpt = trim(force_balance_tags($excerptOutput));
+
+                $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
+                $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
+
+                //$pos = strrpos($wpse_excerpt, '</');
+                //if ($pos !== false)
+                // Inside last HTML tag
+                //$wpse_excerpt = substr_replace($wpse_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
+                //else
+                // After the content
+                $wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
+
+            return $wpse_excerpt;   
+
+        }
+        return apply_filters('wpse_custom_wp_trim_excerpt', $wpse_excerpt, $raw_excerpt);
+    }
+
+endif; 
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'wpse_custom_wp_trim_excerpt'); 
+
 
 /*
 # SPEED OPTIMIZATIONS

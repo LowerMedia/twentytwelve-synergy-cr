@@ -18,19 +18,21 @@
 		<?php endif; ?>
 		<header class="entry-header">
 			
-			<?php if ( is_single() ) : ?>
+			<?php if ( is_single() || is_post_type_archive( 'therapists' ) ) : ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<?php endif; // is_single() ?>
 
 			<?php if ( ! post_password_required() && ! is_attachment() ) : ?>
 				
                 <?php if (wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail' )) { ?>
-                	<?php $featured_img = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail' );  ?>
-                    <div class="lightbox-img featured-img-wrap">
-                    	<a href="<?php echo $featured_img[0]; ?>" rel="lightbox">
-                    		<img src="<?php echo $featured_img[0]; ?>" />
-                    	</a>
-                    </div>
+	                <?php if ( !is_post_type_archive( 'therapists' ) ) { ?>
+	                	<?php $featured_img = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail' );  ?>
+	                    <div class="lightbox-img featured-img-wrap">
+	                    	<a href="<?php echo $featured_img[0]; ?>" rel="lightbox">
+	                    		<img src="<?php echo $featured_img[0]; ?>" />
+	                    	</a>
+	                    </div>
+	                <?php } ?>
                 <?php } ?>
                 <?php if (!wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail' )) { ?>
                     <div class="lightbox-img featured-img-wrap">
@@ -47,9 +49,11 @@
 			?>
 
 			<?php if ( !is_single() ) : ?>
-			<h1 class="entry-title">
-				<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-			</h1>
+				<?php if ( !is_post_type_archive( 'therapists' ) ) : ?>
+					<h1 class="entry-title">
+						<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+					</h1>
+				<?php endif; // is_post_type_archive( 'therapists' ) ?>
 			<?php endif; // is_single() ?>
 
 			<?php if ( comments_open() ) : ?>
@@ -59,15 +63,23 @@
 			<?php endif; // comments_open() ?>
 		</header><!-- .entry-header -->
 
-		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
+		<?php if ( is_search() || is_post_type_archive( 'therapists' ) ) : // Only display Excerpts for Search and Archives (Blogrolls) ?>
 		<div class="entry-summary">
+			<?php $featured_img = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), 'single-post-thumbnail' );  ?>
+			<div class="lightbox-img featured-img-wrap">
+            	<a href="<?php echo $featured_img[0]; ?>" rel="lightbox">
+            		<img src="<?php echo $featured_img[0]; ?>" />
+            	</a>
+            </div>
 			<?php the_excerpt(); ?>
+
 		</div><!-- .entry-summary -->
 		<?php else : ?>
 			<?php if ( is_single() ) : ?>
 				<div class="entry-content">
 					<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
 					<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+					
 				</div><!-- .entry-content -->
 			<?php endif; // is_single() ?>
 		<?php endif; ?>

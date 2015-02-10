@@ -18,6 +18,13 @@
 
 		<div class="entry-content">
 			<?php the_content(); ?>
+			<?php if ( is_front_page() ) : ?>
+				<div class='front-page-custom-image-holder'>
+					<div class='fpci-left fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_left', true); ?></div>
+					<div class='fpci-center fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_center', true); ?></div>
+					<div class='fpci-right fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_right', true); ?></div>
+				</div>
+			<?php endif; ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<footer class="entry-meta">
