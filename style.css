@@ -91,6 +91,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 			box-shadow: none;
 			background: none;
 			max-width: 80%;
+			padding: 0 2.5%;
 		}
 
 	.left-column { width: 25%; }
@@ -292,8 +293,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	}
 
 	@media screen and (max-width: 1024px) {
-		.mobile-scheduler {display:block;}
-		.desktop-scheduler {display:none;}
+		body::-webkit-scrollbar { display: none; }
+
+		.mobile-scheduler { display:block; }
+		.desktop-scheduler { display:none; }
 
 		.left-column,
 		.right-column { 
@@ -324,6 +327,24 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	@media screen and (max-width: 960px) {
 		
+	}
+
+	@media screen and (max-width: 672px) {
+		.site-content { padding: 25px 15px; }
+		.bottom-content-widget { width: 80%; }
+		.front-page-custom-image-holder .fpci-div { 
+			width: auto;
+			max-width: 100%; }
+		.front-page-custom-image-holder .fpci-div img { 
+			height: auto;
+			width: auto; 
+		}
+		.main-navigation { margin: 1.714285714rem 0; }
+		.main-navigation button { 
+			width: 250px;
+			height: 50px;
+			font-size: 150%;
+		}
 	}
 
 	@media screen and (max-width: 300px) {
