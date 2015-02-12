@@ -24,7 +24,8 @@
 
 <footer id="colophon" role="contentinfo">
 	<div class="site-info">
-		<h4>A LowerMedia Site - &copy;<?php echo date("Y"); ?></h4>
+		<h4>Synergy Cedar Rapids - &copy;<?php echo date("Y"); ?></h4>
+		<h5><a href='http://lowermedia.net/'>A LowerMedia Site</a></h5>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
 
