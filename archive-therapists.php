@@ -31,7 +31,7 @@ get_header(); ?>
 					elseif ( is_year() ) :
 						printf( __( 'Yearly Archives: %s', 'twentytwelve' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'twentytwelve' ) ) . '</span>' );
 					else :
-						_e( "Synergy's Message Therapists", 'twentytwelve' );
+						_e( "Synergy's Massage Therapists", 'twentytwelve' );
 					endif;
 				?></h1>
 			</header><!-- .archive-header -->
