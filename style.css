@@ -58,11 +58,15 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		text-align: center;
 	}
 
-	h2,h3,h4,h5,h6 { 
+	h2,h3,h4 { 
 		color: #016836;
 		font-weight: 400;
-		font-size: 20px;
 	}
+
+	h2 { font-size: 22px; }
+	h3 { font-size: 20px; }
+	h4 { font-size: 18px; }
+
 
 	a {
 		color: #1bcfc9;
@@ -118,6 +122,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		height: 176px;
 		width: 280px;
 		box-shadow: none; 
+		display: block;
+		margin: auto;
 	}
 
 	.site-header .widget-area {
@@ -148,6 +154,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* -- SIDEBAR -- */
 
+	.scheduler-wrap { margin-top: 25px; }
+
 	.testimonial-wrap hr {display:none;}
 
 	.main-wrapper #wpcr_respond_1 { display:none; }
@@ -159,7 +167,23 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	.testimonial-wrap {
 		min-height: 135px;
 		max-width: 300px;
-		margin: 10px 0;
+		margin: 10px auto;
+		background: white;
+		border-bottom-right-radius: 1em;
+		border-bottom-left-radius: 1em;
+		padding-bottom: 10px;
+
+		border-radius: 1em;
+		box-shadow: 0 0 2px 1px #afc9bc;
+		display: block;
+	}
+
+	.testimonial-wrap #wpcr_respond_1 .description { padding: 0 10px !important; }
+
+	.testimonial-wrap .more-testimonials-link { 
+		text-align: center; 
+		display:block;
+		width: 100%;
 	}
 
 /* -- CONTENT -- */
@@ -249,12 +273,36 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	}
 
 	.post-type-archive-therapists .entry-title,
-	.blue-rounded-header {
-		background: #6FCCDD;
+	.blue-rounded-header,
+	.hreview h2 {
+		
 		text-align: center;
 		padding: 10px 0;
 		border-radius: 5px 5px 0 0;
 		border-bottom: 5px solid white;
+	}
+
+	.post-type-archive-therapists .entry-title,
+	.blue-rounded-header {
+		background: #6FCCDD;
+	}
+
+	.hreview h2 {
+		color: white;
+		background: #016836;
+	}
+
+	.wpcr_sc { width: 85px; }
+
+	.wpcr_rname { 
+		text-align:center;
+		width: 200px; 
+	}
+
+	.wpcr_sc,
+	.wpcr_rname {
+		margin: 5px auto;
+		float: none;
 	}
 
 	.post-type-archive-therapists .entry-title { color: white; }
@@ -286,17 +334,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* -- MEDIA QUERIES -- */
 
-	.mobile-scheduler {display:none;}
-
 	@media screen and (max-width: 1400px) {
 		body .site { max-width: 100%; }
 	}
 
 	@media screen and (max-width: 1024px) {
 		body::-webkit-scrollbar { display: none; }
-
-		.mobile-scheduler { display:block; }
-		.desktop-scheduler { display:none; }
 
 		.left-column,
 		.right-column { 
@@ -345,6 +388,17 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 			height: 50px;
 			font-size: 150%;
 		}
+		.featured-img-wrap {
+		    display: block;
+		    float: none;
+		    margin: auto;
+		}
+		.featured-img-wrap img { 
+			margin:0 auto 10px auto;
+			max-width: 95%;
+			display: block;
+		}
+		.site-info { text-align: center; }
 	}
 
 	@media screen and (max-width: 300px) {
