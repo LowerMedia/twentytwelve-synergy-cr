@@ -31,7 +31,7 @@
 						foreach ( $postslist as $post ) :
 							setup_postdata( $post ); ?>
 							<div class="entry">
-								<h2><?php the_title(); ?></a></h2>
+								<h2 class='frontpage-postentry-title'><?php the_title(); ?></a></h2>
 								<?php the_time(get_option('date_format')) ?>
 								<?php the_excerpt(); ?>
 								<a href="<?php the_permalink(); ?>">Read More...</a>
