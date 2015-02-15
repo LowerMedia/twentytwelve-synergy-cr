@@ -159,13 +159,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.scheduler-wrap { margin-top: 25px; }
 
-	.testimonial-wrap hr {display:none;}
-
-	.main-wrapper #wpcr_respond_1 { display:none; }
-
-	.page-id-11 #wpcr_respond_1 { display:block; }
+	.testimonial-wrap hr,
+	.main-wrapper #wpcr_respond_1 {display:none;}
 
 	.hreview { display:none; } /*custom.js will make this visible when the page is loaded (on pageload)*/
+
+	.page-id-11 #wpcr_respond_1 { display:block; }
 
 	.testimonial-wrap {
 		min-height: 135px;
@@ -187,6 +186,13 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		text-align: center; 
 		display:block;
 		width: 100%;
+	}
+
+	#wpcr_button_1, 
+	#wpcr_button_1:link {
+	    margin: auto;
+	    width: 300px;
+	    display: block !important;
 	}
 
 /* -- CONTENT -- */
@@ -272,24 +278,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		margin: 0 auto 20px auto;
 	}
 
-	.post-type-archive-therapists .entry-title,
-	.blue-rounded-header,
-	.hreview h2 {
-		
-		text-align: center;
-		padding: 10px 0;
-		border-radius: 5px 5px 0 0;
-		border-bottom: 5px solid white;
-	}
-
-	.post-type-archive-therapists .entry-title,
-	.blue-rounded-header {
-		background: #6FCCDD;
-	}
-
-	.hreview h2 {
-		color: white;
-		background: #016836;
+	.post-type-archive-therapists .featured-img-wrap{
+	    float: left;
+	    padding: 0 20px;
 	}
 
 	.wpcr_sc { width: 85px; }
@@ -305,27 +296,57 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		float: none;
 	}
 
-	.post-type-archive-therapists .entry-title { color: white; }
+	/* Therapists Page Styles */
 
-	.post-type-archive-therapists .type-therapists { margin-bottom:0; }
+		.post-type-archive-therapists .entry-title { color: white; }
 
-	.front-page-custom-image-holder {
-		text-align: center;
-		display: block;
-		width: 100%;
-	}
+		.post-type-archive-therapists .type-therapists { margin-bottom:0; }
 
-	.front-page-custom-image-holder .fpci-div {
-		width: 32%;
-		display: inline-block;
-	}
+	/* Front Page Styles */
 
-	.front-page-custom-image-holder .fpci-div img {
-		height: 165px;
-		width: 250px;
-	}
+		.front-page-custom-image-holder {
+			text-align: center;
+			display: block;
+			width: 100%;
+		}
+
+		.front-page-custom-image-holder .fpci-div {
+			width: 32%;
+			display: inline-block;
+		}
+
+		.front-page-custom-image-holder .fpci-div img {
+			height: 165px;
+			width: 250px;
+		}
 
 	.front-page-posts-holder { text-align: center; }
+	
+	/* Header Banner Style */
+
+		.post-type-archive-therapists .entry-title,
+		.blue-rounded-header,
+		.frontpage-postentry-title,
+		.hreview h2,
+		.entry-content h2 {
+			
+			text-align: center;
+			padding: 10px 0;
+			border-radius: 5px 5px 0 0;
+			border-bottom: 5px solid white;
+		}
+
+		.post-type-archive-therapists .entry-title,
+		.blue-rounded-header {
+			background: #6FCCDD;
+		}
+
+		.hreview h2,
+		.entry-content h2,
+		.frontpage-postentry-title {
+			color: white;
+			background: #016836;
+		}
 
 /* -- FOOTER -- */
 
