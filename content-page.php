@@ -23,6 +23,20 @@
 					<div class='fpci-left fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_left', true); ?></div>
 					<div class='fpci-center fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_center', true); ?></div>
 					<div class='fpci-right fpci-div'><?php echo get_post_meta($post->ID, 'front_page_image_right', true); ?></div>
+				</div class='front-page-posts-holder'>
+
+				<h2><a href='/blog'>What's going on at Synergy?</a></h2>
+				<ul>
+				<?php
+					$args = array( 'numberposts' => 2 );
+
+					$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
+					foreach( $recent_posts as $recent ){
+						echo '<li><a href="' . get_permalink($recent["ID"]) . '">' .   $recent["post_title"].'</a> </li> ';
+					}
+				?>
+				</ul>
+				<div>
 				</div>
 			<?php endif; ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
