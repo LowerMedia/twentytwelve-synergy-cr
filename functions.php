@@ -603,10 +603,18 @@ function custom_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
-function custom_excerpt_more( $length ) {
-    return '';
+//Remove the excerpt link, front page and therapists page
+function custom_remove_excerpt($more) {
+    if(is_post_type_archive( $post_types = ['therapists'] )){
+        return '';
+    } 
+        //else {
+    //     global $post;
+    //     return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read the full article...</a>';
+    // }
 }
-add_filter( 'excerpt_more', 'custom_excerpt_more', 999 );
+add_filter( 'excerpt_more', 'custom_remove_excerpt', 999 );
+
 
 function wpse_allowedtags() {
     // Add custom tags to this string
