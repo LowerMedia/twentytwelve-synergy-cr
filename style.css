@@ -138,7 +138,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* -- NAVIGATION -- */
 	
-	.main-navigation li { width:100%; }
+	.main-navigation li { 
+		text-align: center;
+		width:100%; 
+	}
 
 	.main-navigation li a {
 		text-decoration: none;
