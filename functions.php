@@ -15,15 +15,15 @@
  *
  **/
 
-$defaults = array(
-    'default-image'          => get_stylesheet_directory_uri().'/img/synergy-massage-cedar-rapids-iowa-reiki-continuing-education-280x176.png',
-    'width'                  => 280,
-    'height'                 => 176,
-    'flex-height'            => true,
-    'flex-width'             => true,
-    'header-text'            => false,
-);
-add_theme_support( 'custom-header', $defaults );
+    $defaults = array(
+        'default-image'          => get_stylesheet_directory_uri().'/img/synergy-massage-cedar-rapids-iowa-reiki-continuing-education-280x176.png',
+        'width'                  => 280,
+        'height'                 => 176,
+        'flex-height'            => true,
+        'flex-width'             => true,
+        'header-text'            => false,
+    );
+    add_theme_support( 'custom-header', $defaults );
 
 /**
  *
