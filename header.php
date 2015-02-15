@@ -49,13 +49,19 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/synergy-massage-cedar-rapids-iowa-reiki-continuing-education-280x176.png" class="header-image" width="280" height="176" alt="Synergy Massage Cedar Rapids Logo | Reiki - Continuing Education" /></a>
 			<?php endif; ?>
 			
-			
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></button>
 				<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 			</nav><!-- #site-navigation -->
-			<div class='desktop-scheduler scheduler-wrap'><?php echo do_shortcode( '[schedule_now_button align="center" style="button9"]' ); ?></div>
+
+			<div class='desktop-scheduler scheduler-wrap'>
+				<?php 
+					echo do_shortcode( '[schedule_now_button align="center" style="button9"]' );
+					echo do_shortcode( '[schedule_now widget="overlay"]' ); 
+				?>
+			</div>
+
 			<div class='testimonial-wrap'>
 				<?php echo do_shortcode('[WPCR_SHOW POSTID="11" NUM="10" SNIPPET="80" MORE="Continue reading..." HIDECUSTOM="1" HIDERESPONSE="1"]'); ?>
 				<br />
