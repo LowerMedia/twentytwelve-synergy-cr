@@ -62,12 +62,6 @@
 				?>
 			</div>
 
-			<div class='testimonial-wrap'>
-				<?php echo do_shortcode('[WPCR_SHOW POSTID="11" NUM="10" SNIPPET="80" MORE="Continue reading..." HIDECUSTOM="1" HIDERESPONSE="1"]'); ?>
-				<br />
-				<a class='more-testimonials-link' href="/reviews">More Testimonials</a>
-			</div>
-
 			<?php if ( is_active_sidebar( 'bottom-header-widget' ) ) : ?>
 				<div id="bottom-header-widget" class="bottom-header-widget widget-area" role="complementary">
 					<?php dynamic_sidebar( 'bottom-header-widget' ); ?>
