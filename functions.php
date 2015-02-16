@@ -37,11 +37,12 @@
     }
     add_action( 'wp_enqueue_scripts', 'synergycr_scripts' );
 
-/*
-#
-#   ADD CUSTOM CONTENT TYPES 
-#
-*/
+/**
+ *
+ *  ADD CUSTOM CONTENT TYPES 
+ *
+ *
+ **/
 
     /**
      * Custom Post Types, on the fly creation
@@ -49,7 +50,9 @@
      **/
 
     function scr_custom_post_type_creator($post_type_name, $description, $public, $menu_position, $supports, $has_archive, $irreg_plural, $custom_slug) {
-      if ($irreg_plural) {$plural = 's';} else {$plural = '';}
+      
+      if ($irreg_plural) { $plural = 's'; } else { $plural = ''; }
+      
       $labels = array(
         'name'               => _x( $post_type_name, 'post type general name' ),
         'singular_name'      => _x( strtolower($post_type_name), 'post type singular name' ),
@@ -65,6 +68,7 @@
         'parent_item_colon'  => '',
         'menu_name'          => $post_type_name
       );
+
       $args = array(
         'labels'        => $labels,
         'description'   => $description,
@@ -74,55 +78,51 @@
         'has_archive'   => $has_archive,
         'rewrite'       => array( 'slug' => $custom_slug )
       );
+
       register_post_type( $post_type_name, $args ); 
+
     }
+
     add_action( 'init', scr_custom_post_type_creator('Therapists', 'Holds our therapists specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false, 'massage-therapists'));
 
-/*
-#
-#   Make Archives.php Include Custom Post Types
-#   http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/
-#
-*/
-/*
+/**
+ *
+ *  Make Archives.php Include Custom Post Types
+ *  http://css-tricks.com/snippets/wordpress/make-archives-php-include-custom-post-types/
+ *
+ **/
 
-    --    ADD CUSTOM POST TYPES HERE   --
-
-*/
-    function namespace_add_custom_types( $query ) {
+    function scr_add_custom_types( $query ) {
       if( is_category() || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
             $query->set( 'post_type', array( 'post', 'post-type-name' ));
             return $query;
         }
     }
-    add_filter( 'pre_get_posts', 'namespace_add_custom_types' );
+    add_filter( 'pre_get_posts', 'scr_add_custom_types' );
 
-/*
-#
-#   Define what post types to search
-#   The hook needed to search ALL content
-#
-*/
-/*
+/**
+ *
+ *  Define what post types to search
+ *  The hook needed to search ALL content
+ *
+ **/
 
-    --    ADD CUSTOM POST TYPES HERE   --
-
-*/
-    function searchAll( $query ) {
+    function scr_searchAll( $query ) {
         if ( $query->is_search ) {
-            $query->set( 'post_type', array( 'post', 'page', 'feed', 'products', 'people'));
+            $query->set( 'post_type', array( 'post', 'page', 'feed', 'therapists'));
         }
         return $query;
     }
-    add_filter( 'the_search_query', 'searchAll' );
+    add_filter( 'the_search_query', 'scr_searchAll' );
 
-/*
-#
-#   PHONENUMBER
-#   
-#
-*/
-    function format_phonenumber( $arg ) {
+/**
+ *
+ *  Phonenumber
+ *  
+ *
+ **/
+
+    function scr_format_phonenumber( $arg ) {
         $data = '+'.$arg;
         if(  preg_match( '/^\+\d(\d{3})(\d{3})(\d{4})$/', $data,  $matches ) )
         {
@@ -133,19 +133,19 @@
     }
 
     // Add [phonenumber] shortcode
-    function phonenumber_shortcode( $atts ){
+    function scr_phonenumber_shortcode( $atts ){
         //retrieve phone number from database
         $scr_array = get_option('synergycr_phone_number');
 
         //check if user is on mobile if so make the number a link
         if (wp_is_mobile())
         {
-            return '<a href="tel:+'.$scr_array["id_number"].'">'.format_phonenumber($scr_array["id_number"]).'</a>';
+            return '<a href="tel:+'.$scr_array["id_number"].'">'.scr_format_phonenumber($scr_array["id_number"]).'</a>';
         } else {
-            return format_phonenumber($scr_array["id_number"]);
+            return scr_format_phonenumber($scr_array["id_number"]);
         }
     }
-    add_shortcode( 'phonenumber', 'phonenumber_shortcode' );
+    add_shortcode( 'phonenumber', 'scr_phonenumber_shortcode' );
 
 
     class synergycr_phonenumber_settings
@@ -267,11 +267,12 @@
 
     if( is_admin() ) { $synergycr_phonenumber_settings = new synergycr_phonenumber_settings(); }
 
-/*
-#
-#   WHITE LABEL
-#
-*/
+/**
+ *
+ *  White label
+ *  
+ *
+ **/
 
     function scr_custom_admin_styles() {
        echo '<style type="text/css">
@@ -353,12 +354,12 @@
     function scr_add_dashboard_widgets() { wp_add_dashboard_widget('wp_dashboard_widget', 'Theme Details', 'scr_theme_info'); }
     add_action('wp_dashboard_setup', 'scr_add_dashboard_widgets' );
 
-/*
-#
-#   REGISTER SIDEBARS/WIDGET AREAS
-#   
-#
-*/
+/**
+ *
+ *  REGISTER SIDEBARS/WIDGET AREAS
+ *  
+ *
+ **/
 
     function synergycr_widgets_destroy() {
 
@@ -392,12 +393,12 @@
     }
     add_action( 'widgets_init', 'synergycr_widgets_init' );
 
-/*
-#
-#   REGISTER MENUS
-#   
-#
-*/
+/**
+ *
+ *  REGISTER MENUS
+ *  
+ *
+ **/
 
     function synergycr_menus_init() {
       // register_nav_menus(
@@ -409,10 +410,13 @@
     }
     add_action( 'init', 'synergycr_menus_init' );
 
+/**
+ *
+ *  Create widget info for above function: scr_add_dashboard_widgets
+ *  
+ *
+ **/
 
-/*
-#   Create widget info for above function: scr_add_dashboard_widgets
-*/
     function scr_theme_info() {
       echo "
           <ul>
@@ -423,11 +427,12 @@
       ;
     }
 
-/*
-#
-#   ADD CUSTOM ADMIN LOGIN LOGO
-#
-*/
+/**
+ *
+ *  ADD CUSTOM ADMIN LOGIN LOGO
+ *  
+ *
+ **/
 
     function scr_custom_admin_logo() {
         echo '
@@ -438,11 +443,13 @@
     }
     add_action('admin_head', 'scr_custom_admin_logo');
 
-/*
-#
-#   MOVE ADMIN BAR TO BOTTOM ON FRONT END
-#
-*/
+/**
+ *
+ *  MOVE ADMIN BAR TO BOTTOM ON FRONT END
+ *  
+ *
+ **/
+
     function scr_admin_bar_bottom() {
         echo '
             <style type="text/css">
@@ -486,135 +493,147 @@
         }
     }
 
-/*
-#
-#   ENABLE SHORTCODE IN WIDGETS
-#
-*/
+/**
+ *
+ *  ENABLE SHORTCODE IN WIDGETS
+ *  
+ *
+ **/
 
     add_filter('widget_text', 'do_shortcode');
 
-/*
-#
-#   EXCERPT LENGTH
-#
-*/
+/**
+ *
+ *  EXCERPT LENGTH
+ *  
+ *
+ **/
 
-function src_custom_excerpt_length( $length ) {
-    return 10000;
-}
-add_filter( 'excerpt_length', 'src_custom_excerpt_length', 999 );
-
-//Remove the excerpt link, front page and therapists page
-function src_custom_remove_excerpt($more) {
-    if ( is_post_type_archive( $post_types = ['therapists'] ) ) {
-        return '';
+    function src_custom_excerpt_length( $length ) {
+        return 10000;
     }
-}
-add_filter( 'excerpt_more', 'src_custom_remove_excerpt', 999 );
+
+    add_filter( 'excerpt_length', 'src_custom_excerpt_length', 999 );
+
+/**
+ *
+ *  Remove the excerpt link, front page and therapists page
+ *  
+ *
+ **/
+
+    function src_custom_remove_excerpt($more) {
+        if ( is_post_type_archive( $post_types = ['therapists'] ) ) {
+            return '';
+        }
+    }
+
+    add_filter( 'excerpt_more', 'src_custom_remove_excerpt', 999 );
 
 
-function scr_allowedtags() {
+    function scr_allowedtags() {
     // Add custom tags to this string
         return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<video>,<audio>'; 
     }
 
-if ( ! function_exists( 'scr_custom_wp_trim_excerpt' ) ) : 
+    if ( ! function_exists( 'scr_custom_wp_trim_excerpt' ) ) : 
 
-    function scr_custom_wp_trim_excerpt($scr_excerpt) {
-    $raw_excerpt = $scr_excerpt;
-        if ( '' == $scr_excerpt ) {
+        function scr_custom_wp_trim_excerpt($scr_excerpt) {
+        $raw_excerpt = $scr_excerpt;
+            if ( '' == $scr_excerpt ) {
 
-            $scr_excerpt = get_the_content('');
-            $scr_excerpt = strip_shortcodes( $scr_excerpt );
-            $scr_excerpt = apply_filters('the_content', $scr_excerpt);
-            $scr_excerpt = str_replace(']]>', ']]&gt;', $scr_excerpt);
-            $scr_excerpt = strip_tags($scr_excerpt, scr_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
+                $scr_excerpt = get_the_content('');
+                $scr_excerpt = strip_shortcodes( $scr_excerpt );
+                $scr_excerpt = apply_filters('the_content', $scr_excerpt);
+                $scr_excerpt = str_replace(']]>', ']]&gt;', $scr_excerpt);
+                $scr_excerpt = strip_tags($scr_excerpt, scr_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
-            //Set the excerpt word count and only break after sentence is complete.
-                $excerpt_word_count = 75;
-                $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
-                $tokens = array();
-                $excerptOutput = '';
-                $count = 0;
+                //Set the excerpt word count and only break after sentence is complete.
+                    $excerpt_word_count = 75;
+                    $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+                    $tokens = array();
+                    $excerptOutput = '';
+                    $count = 0;
 
-                // Divide the string into tokens; HTML tags, or words, followed by any whitespace
-                preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $scr_excerpt, $tokens);
+                    // Divide the string into tokens; HTML tags, or words, followed by any whitespace
+                    preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $scr_excerpt, $tokens);
 
-                foreach ($tokens[0] as $token) { 
+                    foreach ($tokens[0] as $token) { 
 
-                    if ($count >= $excerpt_length && preg_match('/[\,\;\?\.\!]\s*$/uS', $token)) { 
-                    // Limit reached, continue until , ; ? . or ! occur at the end
-                        $excerptOutput .= trim($token);
-                        break;
+                        if ($count >= $excerpt_length && preg_match('/[\,\;\?\.\!]\s*$/uS', $token)) { 
+                        // Limit reached, continue until , ; ? . or ! occur at the end
+                            $excerptOutput .= trim($token);
+                            break;
+                        }
+
+                        // Add words to complete sentence
+                        $count++;
+
+                        // Append what's left of the token
+                        $excerptOutput .= $token;
                     }
 
-                    // Add words to complete sentence
-                    $count++;
+                $scr_excerpt = trim(force_balance_tags($excerptOutput));
 
-                    // Append what's left of the token
-                    $excerptOutput .= $token;
-                }
+                    $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
+                    $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
 
-            $scr_excerpt = trim(force_balance_tags($excerptOutput));
+                    $scr_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
-                $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
-                $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
+                return $scr_excerpt;   
 
-                $scr_excerpt .= $excerpt_more; /*Add read more in new paragraph */
-
-            return $scr_excerpt;   
-
+            }
+            return apply_filters('scr_custom_wp_trim_excerpt', $scr_excerpt, $raw_excerpt);
         }
-        return apply_filters('scr_custom_wp_trim_excerpt', $scr_excerpt, $raw_excerpt);
+
+    endif; 
+
+    remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+    add_filter('get_the_excerpt', 'scr_custom_wp_trim_excerpt'); 
+
+/**
+ *
+ *  SPEED OPTIMIZATIONS
+ *  
+ *
+ **/
+
+
+    // Remove jquery migrate as is not needed
+    if(!is_admin()) add_filter( 'wp_default_scripts', 'dequeue_jquery_migrate' );
+
+    function dequeue_jquery_migrate( &$scripts){
+        $scripts->remove( 'jquery');
+        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.10.2' );
     }
 
-endif; 
+    //load jquery from google
+    if (!is_admin()) add_action("wp_enqueue_scripts", "synergycr_jquery_enqueue", 11);
 
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'scr_custom_wp_trim_excerpt'); 
+    function synergycr_jquery_enqueue() {
+        wp_deregister_script('jquery');
+        // wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false, null, true);
+        wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", false, null, true);
+        wp_enqueue_script('jquery');
+    }
 
+/**
+ *
+ *  SPEED OPTIMIZATIONS
+ *  -Load all fonts from google
+ *
+ **/
 
-/*
-# SPEED OPTIMIZATIONS
-# 
-*/
-
-// Remove jquery migrate as is not needed
-if(!is_admin()) add_filter( 'wp_default_scripts', 'dequeue_jquery_migrate' );
-function dequeue_jquery_migrate( &$scripts){
-    $scripts->remove( 'jquery');
-    $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.10.2' );
-}
-
-//load jquery from google
-if (!is_admin()) add_action("wp_enqueue_scripts", "synergycr_jquery_enqueue", 11);
-function synergycr_jquery_enqueue() {
-    wp_deregister_script('jquery');
-    // wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false, null, true);
-    wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", false, null, true);
-    wp_enqueue_script('jquery');
-}
-
-/*
-#
-#   SPEED OPTIMIZATIONS
-#   -Load all fonts from google
-#
-#
-*/
-
-    function load_fonts() {
+    function scr_load_fonts() {
         wp_dequeue_style( 'twentytwelve-fonts' );
         wp_deregister_style( 'twentytwelve-fonts' );
         wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Signika:400,700|Slabo+27px|Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext');
         wp_enqueue_style( 'googleFonts');
     }
-    add_action('wp_print_styles', 'load_fonts');
+    add_action('wp_print_styles', 'scr_load_fonts');
 
-
-/*
-#
-#   END
-#
-*/
+/**
+ *
+ *  END
+ *
+ **/
