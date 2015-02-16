@@ -32,7 +32,7 @@
  *
  **/
 
-    function lowermedia_scripts() {
+    function synergycr_scripts() {
 
         //if (is_front_page()) {
             wp_enqueue_script(
@@ -43,12 +43,12 @@
         //}
 
     }
-    add_action( 'wp_enqueue_scripts', 'lowermedia_scripts' );
+    add_action( 'wp_enqueue_scripts', 'synergycr_scripts' );
 
-    // function lowermedia_enqueue_parent_style() {
+    // function synergycr_enqueue_parent_style() {
     //     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
     // }
-    // add_action( 'wp_enqueue_scripts', 'lowermedia_enqueue_parent_style' );
+    // add_action( 'wp_enqueue_scripts', 'synergycr_enqueue_parent_style' );
 
 
 
@@ -63,7 +63,7 @@
      *
      **/
 
-    function lm_custom_post_type_creator($post_type_name, $description, $public, $menu_position, $supports, $has_archive, $irreg_plural, $custom_slug) {
+    function scr_custom_post_type_creator($post_type_name, $description, $public, $menu_position, $supports, $has_archive, $irreg_plural, $custom_slug) {
       if ($irreg_plural) {$plural = 's';} else {$plural = '';}
       $labels = array(
         'name'               => _x( $post_type_name, 'post type general name' ),
@@ -91,55 +91,55 @@
       );
       register_post_type( $post_type_name, $args ); 
     }
-    // add_action( 'init', lm_custom_post_type_creator('Testimonials', 'Holds our testimonials', true, 4, array( 'title', 'editor', 'thumbnail' ), true, false));
-    add_action( 'init', lm_custom_post_type_creator('Therapists', 'Holds our therapists specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false, 'massage-therapists'));
-    // add_action( 'init', lm_custom_post_type_creator('Car Care Tips', 'Holds our car care tips.', true, 6, array( 'title', 'editor', 'thumbnail', 'excerpt' ), true, false));
-    // add_action( 'init', lm_custom_post_type_creator('Car Care Videos', 'Holds our car care videos.', true, 7, array( 'title', 'editor', 'thumbnail' ), true, false));
+    // add_action( 'init', scr_custom_post_type_creator('Testimonials', 'Holds our testimonials', true, 4, array( 'title', 'editor', 'thumbnail' ), true, false));
+    add_action( 'init', scr_custom_post_type_creator('Therapists', 'Holds our therapists specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false, 'massage-therapists'));
+    // add_action( 'init', scr_custom_post_type_creator('Car Care Tips', 'Holds our car care tips.', true, 6, array( 'title', 'editor', 'thumbnail', 'excerpt' ), true, false));
+    // add_action( 'init', scr_custom_post_type_creator('Car Care Videos', 'Holds our car care videos.', true, 7, array( 'title', 'editor', 'thumbnail' ), true, false));
 
     /**
      * Adds a box to the main column on the Post and Page edit screens.
      */
-    // function lm_add_meta_box() {
+    // function scr_add_meta_box() {
     //     add_meta_box(
-    //         'lm_staff_position',
-    //         __( 'Staff Position', 'lm_textdomain' ),
-    //         'lm_meta_box_callback',
+    //         'scr_staff_position',
+    //         __( 'Staff Position', 'scr_textdomain' ),
+    //         'scr_meta_box_callback',
     //         'staff',//$screen
     //         'side',
     //         'high'
     //     );
 
     //     add_meta_box(
-    //         'lm_testimonials_source',
-    //         __( 'Testimonial Source', 'lm_textdomain' ),
-    //         'lm_meta_box_callback',
+    //         'scr_testimonials_source',
+    //         __( 'Testimonial Source', 'scr_textdomain' ),
+    //         'scr_meta_box_callback',
     //         'testimonials',//$screen
     //         'side',
     //         'high'
     //     );
     // }
-    // add_action( 'add_meta_boxes', 'lm_add_meta_box' );
+    // add_action( 'add_meta_boxes', 'scr_add_meta_box' );
 
     /**
      * Prints the box content.
      * 
      * @param WP_Post $post The object for the current post/page.
      */
-    // function lm_meta_box_callback( $post ) {
+    // function scr_meta_box_callback( $post ) {
 
     //     // Add an nonce field so we can check for it later.
-    //     wp_nonce_field( 'lm_meta_box', 'lm_meta_box_nonce' );
+    //     wp_nonce_field( 'scr_meta_box', 'scr_meta_box_nonce' );
 
         
     //      * Use get_post_meta() to retrieve an existing value
     //      * from the database and use the value for the form.
          
-    //     $value = get_post_meta( $post->ID, '_lm_meta_value_key', true );
+    //     $value = get_post_meta( $post->ID, '_scr_meta_value_key', true );
 
-    //     echo '<label for="lm_new_field">';
-    //     _e( '', 'lm_textdomain' );
+    //     echo '<label for="scr_new_field">';
+    //     _e( '', 'scr_textdomain' );
     //     echo '</label> ';
-    //     echo '<input type="text" id="lm_new_field" name="lm_new_field" value="' . esc_attr( $value ) . '" size="25" />';
+    //     echo '<input type="text" id="scr_new_field" name="scr_new_field" value="' . esc_attr( $value ) . '" size="25" />';
     // }
 
     /**
@@ -147,7 +147,7 @@
      *
      * @param int $post_id The ID of the post being saved.
      */
-    // function lm_save_meta_box_data( $post_id ) {
+    // function scr_save_meta_box_data( $post_id ) {
 
     //     /*
     //      * We need to verify this came from our screen and with proper authorization,
@@ -155,9 +155,9 @@
     //      */
 
     //     // Check if our nonce is set.
-    //     if ( ! isset( $_POST['lm_meta_box_nonce'] ) ) { return; }
+    //     if ( ! isset( $_POST['scr_meta_box_nonce'] ) ) { return; }
     //     // Verify that the nonce is valid.
-    //     if ( ! wp_verify_nonce( $_POST['lm_meta_box_nonce'], 'lm_meta_box' ) ) { return; }
+    //     if ( ! wp_verify_nonce( $_POST['scr_meta_box_nonce'], 'scr_meta_box' ) ) { return; }
     //     // If this is an autosave, our form has not been submitted, so we don't want to do anything.
     //     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
     //     // Check the user's permissions.
@@ -166,13 +166,13 @@
 
     //     /* OK, it's safe for us to save the data now. */
     //     // Make sure that it is set.
-    //     if ( ! isset( $_POST['lm_new_field'] ) ) { return;  }
+    //     if ( ! isset( $_POST['scr_new_field'] ) ) { return;  }
     //     // Sanitize user input.
-    //     $my_data = sanitize_text_field( $_POST['lm_new_field'] );
+    //     $my_data = sanitize_text_field( $_POST['scr_new_field'] );
     //     // Update the meta field in the database.
-    //     update_post_meta( $post_id, '_lm_meta_value_key', $my_data );
+    //     update_post_meta( $post_id, '_scr_meta_value_key', $my_data );
     // }
-    // add_action( 'save_post', 'lm_save_meta_box_data' );
+    // add_action( 'save_post', 'scr_save_meta_box_data' );
 
 
 
@@ -233,20 +233,20 @@
     // Add [phonenumber] shortcode
     function phonenumber_shortcode( $atts ){
         //retrieve phone number from database
-        $lm_array = get_option('lowermedia_phone_number');
+        $scr_array = get_option('synergycr_phone_number');
 
         //check if user is on mobile if so make the number a link
         if (wp_is_mobile())
         {
-            return '<a href="tel:+'.$lm_array["id_number"].'">'.format_phonenumber($lm_array["id_number"]).'</a>';
+            return '<a href="tel:+'.$scr_array["id_number"].'">'.format_phonenumber($scr_array["id_number"]).'</a>';
         } else {
-            return format_phonenumber($lm_array["id_number"]);
+            return format_phonenumber($scr_array["id_number"]);
         }
     }
     add_shortcode( 'phonenumber', 'phonenumber_shortcode' );
 
 
-    class lowermedia_phonenumber_settings
+    class synergycr_phonenumber_settings
     {
         /**
          * Holds the values to be used in the fields callbacks
@@ -272,7 +272,7 @@
                 'Settings Admin', 
                 'Phone Number', 
                 'manage_options', 
-                'lowermedia-setting-admin', 
+                'synergycr-setting-admin', 
                 array( $this, 'create_admin_page' )
             );
         }
@@ -283,7 +283,7 @@
         public function create_admin_page()
         {
             // Set class property
-            $this->options = get_option( 'lowermedia_phone_number' );
+            $this->options = get_option( 'synergycr_phone_number' );
             ?>
             <div class="wrap">
                 <?php screen_icon(); ?>
@@ -291,8 +291,8 @@
                 <form method="post" action="options.php">
                 <?php
                     // This prints out all hidden setting fields
-                    settings_fields( 'lowermedia_phone_options' );   
-                    do_settings_sections( 'lowermedia-setting-admin' );
+                    settings_fields( 'synergycr_phone_options' );   
+                    do_settings_sections( 'synergycr-setting-admin' );
                     submit_button(); 
                 ?>
                 </form>
@@ -306,8 +306,8 @@
         public function page_init()
         {        
             register_setting(
-                'lowermedia_phone_options', // Option group
-                'lowermedia_phone_number', // Option name
+                'synergycr_phone_options', // Option group
+                'synergycr_phone_number', // Option name
                 array( $this, 'sanitize' ) // Sanitize
             );
 
@@ -315,14 +315,14 @@
                 'setting_section_id', // ID
                 'My Custom Settings', // Title
                 array( $this, 'print_section_info' ), // Callback
-                'lowermedia-setting-admin' // Page
+                'synergycr-setting-admin' // Page
             );  
 
             add_settings_field(
                 'id_number', // ID
                 'ID Number', // Title 
                 array( $this, 'id_number_callback' ), // Callback
-                'lowermedia-setting-admin', // Page
+                'synergycr-setting-admin', // Page
                 'setting_section_id' // Section           
             );      
        
@@ -356,14 +356,14 @@
         public function id_number_callback()
         {
             printf(
-                '<input type="text" id="id_number" name="lowermedia_phone_number[id_number]" value="%s" />',
+                '<input type="text" id="id_number" name="synergycr_phone_number[id_number]" value="%s" />',
                 isset( $this->options['id_number'] ) ? esc_attr( $this->options['id_number']) : ''
             );
         }
 
     }
 
-    if( is_admin() ) { $lowermedia_phonenumber_settings = new lowermedia_phonenumber_settings(); }
+    if( is_admin() ) { $synergycr_phonenumber_settings = new synergycr_phonenumber_settings(); }
 
 /*
 #
@@ -371,7 +371,7 @@
 #
 */
 
-    function lm_custom_admin_styles() {
+    function scr_custom_admin_styles() {
        echo '<style type="text/css">
            /* Styles here! */
             body {font-family: Futura, "Trebuchet MS", Arial, sans-serif;}
@@ -410,10 +410,10 @@
             #adminmenu li>a.menu-top:focus { background: linear-gradient(to bottom,#f9f9f9 37%,#c9c9c9 100%); }
          </style>';
     }
-    add_action('admin_head', 'lm_custom_admin_styles');
+    add_action('admin_head', 'scr_custom_admin_styles');
 
     //* Replace WordPress login logo with your own
-    function lm_custom_login_logo() {
+    function scr_custom_login_logo() {
         echo '<style type="text/css">
         body { font-family: Futura, "Trebuchet MS", Arial, sans-serif; }
         h1 a 
@@ -429,27 +429,27 @@
         .login {background:#333;}
         </style>';
     }
-    add_action('login_head', 'lm_custom_login_logo');
+    add_action('login_head', 'scr_custom_login_logo');
 
     //* Change the URL of the WordPress login logo
-    function lm_url_login_logo(){ return get_bloginfo( 'wpurl' ); }
-    add_filter('login_headerurl', 'lm_url_login_logo');
+    function scr_url_login_logo(){ return get_bloginfo( 'wpurl' ); }
+    add_filter('login_headerurl', 'scr_url_login_logo');
 
     //* Login Screen: Change login logo hover text
-    function lm_login_logo_url_title() { return 'A LowerMedia Site'; }
-    add_filter( 'login_headertitle', 'lm_login_logo_url_title' );
+    function scr_login_logo_url_title() { return 'A synergycr Site'; }
+    add_filter( 'login_headertitle', 'scr_login_logo_url_title' );
 
     //* Login Screen: Don't inform user which piece of credential was incorrect
-    function lm_failed_login () { return 'The login information you have entered is incorrect. Please try again.'; }
-    add_filter ( 'login_errors', 'lm_failed_login' );
+    function scr_failed_login () { return 'The login information you have entered is incorrect. Please try again.'; }
+    add_filter ( 'login_errors', 'scr_failed_login' );
 
     //* Modify the admin footer text
-    function lm_modify_footer_admin () { echo '<span id="footer-meta"><a href="http://lowermedia.net" target="_blank">A LowerMedia Site</a></span>'; }
-    add_filter('admin_footer_text', 'lm_modify_footer_admin');
+    function scr_modify_footer_admin () { echo '<span id="footer-meta"><a href="http://synergycr.net" target="_blank">A synergycr Site</a></span>'; }
+    add_filter('admin_footer_text', 'scr_modify_footer_admin');
 
     //* Add theme info box into WordPress Dashboard
-    function lm_add_dashboard_widgets() { wp_add_dashboard_widget('wp_dashboard_widget', 'Theme Details', 'lm_theme_info'); }
-    add_action('wp_dashboard_setup', 'lm_add_dashboard_widgets' );
+    function scr_add_dashboard_widgets() { wp_add_dashboard_widget('wp_dashboard_widget', 'Theme Details', 'scr_theme_info'); }
+    add_action('wp_dashboard_setup', 'scr_add_dashboard_widgets' );
 
 /*
 #
@@ -458,16 +458,16 @@
 #
 */
 
-    function lowermedia_widgets_destroy() {
+    function synergycr_widgets_destroy() {
 
         // Unregister some of the TwentyTwelve sidebars
         unregister_sidebar( 'sidebar-1' );
         unregister_sidebar( 'sidebar-2' );
         unregister_sidebar( 'sidebar-3' );
     }
-    add_action( 'widgets_init', 'lowermedia_widgets_destroy', 11);
+    add_action( 'widgets_init', 'synergycr_widgets_destroy', 11);
 
-    function lowermedia_widgets_init() {
+    function synergycr_widgets_init() {
 
         register_sidebar( array(
             'name' => 'Bottom Sidebar Widget Area',
@@ -488,7 +488,7 @@
         ) );
 
     }
-    add_action( 'widgets_init', 'lowermedia_widgets_init' );
+    add_action( 'widgets_init', 'synergycr_widgets_init' );
 
 /*
 #
@@ -497,7 +497,7 @@
 #
 */
 
-    function lowermedia_menus_init() {
+    function synergycr_menus_init() {
       // register_nav_menus(
       //   array(
       //     'new-menu-name' => __( 'New Menu Name' ),
@@ -505,17 +505,17 @@
       //   )
       // );
     }
-    add_action( 'init', 'lowermedia_menus_init' );
+    add_action( 'init', 'synergycr_menus_init' );
 
 
 /*
-#   Create widget info for above function: lm_add_dashboard_widgets
+#   Create widget info for above function: scr_add_dashboard_widgets
 */
-    function lm_theme_info() {
+    function scr_theme_info() {
       echo "
           <ul>
-          <li><strong>Developed By:</strong> LowerMedia.Net</li>
-          <li><strong>Website:</strong> <a href='http://lowermedia.net'>www.lowermedia.net</a></li>
+          <li><strong>Developed By:</strong> synergycr.Net</li>
+          <li><strong>Website:</strong> <a href='http://synergycr.net'>www.synergycr.net</a></li>
           <li><strong>Contact:</strong> <a href='mailto:pete.lower@gmail.com'>pete.lower@gmail.com</a></li>
           </ul>"
       ;
@@ -541,7 +541,7 @@
 #   MOVE ADMIN BAR TO BOTTOM ON FRONT END
 #
 */
-    function lm_admin_bar_bottom() {
+    function scr_admin_bar_bottom() {
         echo '
             <style type="text/css">
 
@@ -578,7 +578,7 @@
     if(current_user_can( 'edit_posts' )) {
         if(!is_admin()) {
             if(!wp_is_mobile()) {
-                add_action('wp_head', 'lm_admin_bar_bottom');
+                add_action('wp_head', 'scr_admin_bar_bottom');
                 add_action('get_header', 'my_filter_head');
             }
         }
@@ -696,8 +696,8 @@ function dequeue_jquery_migrate( &$scripts){
 }
 
 //load jquery from google
-if (!is_admin()) add_action("wp_enqueue_scripts", "lowermedia_jquery_enqueue", 11);
-function lowermedia_jquery_enqueue() {
+if (!is_admin()) add_action("wp_enqueue_scripts", "synergycr_jquery_enqueue", 11);
+function synergycr_jquery_enqueue() {
     wp_deregister_script('jquery');
     // wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false, null, true);
     wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", false, null, true);
@@ -705,8 +705,8 @@ function lowermedia_jquery_enqueue() {
 }
 
 //added lazy load styles to style.css so deregister
-// add_action( 'wp_print_styles', 'lowermedia_deregister_styles', 100 );
-// function lowermedia_deregister_styles() {
+// add_action( 'wp_print_styles', 'synergycr_deregister_styles', 100 );
+// function synergycr_deregister_styles() {
 //   wp_deregister_style( 'image-lazy-load-frontend' );
 // }
 
