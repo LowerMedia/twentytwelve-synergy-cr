@@ -2,14 +2,6 @@
 
 /**
  *
- *
- *
- *
- **/
-
-
-/**
- *
  *  ADD CUSTOM HEADER SUPPORT
  *
  *
@@ -44,13 +36,6 @@
 
     }
     add_action( 'wp_enqueue_scripts', 'synergycr_scripts' );
-
-    // function synergycr_enqueue_parent_style() {
-    //     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-    // }
-    // add_action( 'wp_enqueue_scripts', 'synergycr_enqueue_parent_style' );
-
-
 
 /*
 #
@@ -91,90 +76,7 @@
       );
       register_post_type( $post_type_name, $args ); 
     }
-    // add_action( 'init', scr_custom_post_type_creator('Testimonials', 'Holds our testimonials', true, 4, array( 'title', 'editor', 'thumbnail' ), true, false));
     add_action( 'init', scr_custom_post_type_creator('Therapists', 'Holds our therapists specific data', true, 5, array( 'title', 'editor', 'thumbnail' ), true, false, 'massage-therapists'));
-    // add_action( 'init', scr_custom_post_type_creator('Car Care Tips', 'Holds our car care tips.', true, 6, array( 'title', 'editor', 'thumbnail', 'excerpt' ), true, false));
-    // add_action( 'init', scr_custom_post_type_creator('Car Care Videos', 'Holds our car care videos.', true, 7, array( 'title', 'editor', 'thumbnail' ), true, false));
-
-    /**
-     * Adds a box to the main column on the Post and Page edit screens.
-     */
-    // function scr_add_meta_box() {
-    //     add_meta_box(
-    //         'scr_staff_position',
-    //         __( 'Staff Position', 'scr_textdomain' ),
-    //         'scr_meta_box_callback',
-    //         'staff',//$screen
-    //         'side',
-    //         'high'
-    //     );
-
-    //     add_meta_box(
-    //         'scr_testimonials_source',
-    //         __( 'Testimonial Source', 'scr_textdomain' ),
-    //         'scr_meta_box_callback',
-    //         'testimonials',//$screen
-    //         'side',
-    //         'high'
-    //     );
-    // }
-    // add_action( 'add_meta_boxes', 'scr_add_meta_box' );
-
-    /**
-     * Prints the box content.
-     * 
-     * @param WP_Post $post The object for the current post/page.
-     */
-    // function scr_meta_box_callback( $post ) {
-
-    //     // Add an nonce field so we can check for it later.
-    //     wp_nonce_field( 'scr_meta_box', 'scr_meta_box_nonce' );
-
-        
-    //      * Use get_post_meta() to retrieve an existing value
-    //      * from the database and use the value for the form.
-         
-    //     $value = get_post_meta( $post->ID, '_scr_meta_value_key', true );
-
-    //     echo '<label for="scr_new_field">';
-    //     _e( '', 'scr_textdomain' );
-    //     echo '</label> ';
-    //     echo '<input type="text" id="scr_new_field" name="scr_new_field" value="' . esc_attr( $value ) . '" size="25" />';
-    // }
-
-    /**
-     * When the post is saved, saves our custom data.
-     *
-     * @param int $post_id The ID of the post being saved.
-     */
-    // function scr_save_meta_box_data( $post_id ) {
-
-    //     /*
-    //      * We need to verify this came from our screen and with proper authorization,
-    //      * because the save_post action can be triggered at other times.
-    //      */
-
-    //     // Check if our nonce is set.
-    //     if ( ! isset( $_POST['scr_meta_box_nonce'] ) ) { return; }
-    //     // Verify that the nonce is valid.
-    //     if ( ! wp_verify_nonce( $_POST['scr_meta_box_nonce'], 'scr_meta_box' ) ) { return; }
-    //     // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-    //     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }
-    //     // Check the user's permissions.
-    //     if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) { if ( ! current_user_can( 'edit_page', $post_id ) ) { return; }
-    //     } else { if ( ! current_user_can( 'edit_post', $post_id ) ) { return; } }
-
-    //     /* OK, it's safe for us to save the data now. */
-    //     // Make sure that it is set.
-    //     if ( ! isset( $_POST['scr_new_field'] ) ) { return;  }
-    //     // Sanitize user input.
-    //     $my_data = sanitize_text_field( $_POST['scr_new_field'] );
-    //     // Update the meta field in the database.
-    //     update_post_meta( $post_id, '_scr_meta_value_key', $my_data );
-    // }
-    // add_action( 'save_post', 'scr_save_meta_box_data' );
-
-
 
 /*
 #
@@ -605,13 +507,9 @@ add_filter( 'excerpt_length', 'src_custom_excerpt_length', 999 );
 
 //Remove the excerpt link, front page and therapists page
 function src_custom_remove_excerpt($more) {
-    if(is_post_type_archive( $post_types = ['therapists'] )){
+    if ( is_post_type_archive( $post_types = ['therapists'] ) ) {
         return '';
-    } 
-        //else {
-    //     global $post;
-    //     return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read the full article...</a>';
-    // }
+    }
 }
 add_filter( 'excerpt_more', 'src_custom_remove_excerpt', 999 );
 
@@ -663,12 +561,6 @@ if ( ! function_exists( 'scr_custom_wp_trim_excerpt' ) ) :
                 $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
                 $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
 
-                //$pos = strrpos($scr_excerpt, '</');
-                //if ($pos !== false)
-                // Inside last HTML tag
-                //$scr_excerpt = substr_replace($scr_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
-                //else
-                // After the content
                 $scr_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
             return $scr_excerpt;   
@@ -703,12 +595,6 @@ function synergycr_jquery_enqueue() {
     wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", false, null, true);
     wp_enqueue_script('jquery');
 }
-
-//added lazy load styles to style.css so deregister
-// add_action( 'wp_print_styles', 'synergycr_deregister_styles', 100 );
-// function synergycr_deregister_styles() {
-//   wp_deregister_style( 'image-lazy-load-frontend' );
-// }
 
 /*
 #
