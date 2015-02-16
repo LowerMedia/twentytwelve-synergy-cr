@@ -348,7 +348,7 @@
     add_filter ( 'login_errors', 'scr_failed_login' );
 
     //* Modify the admin footer text
-    function scr_modify_footer_admin () { echo '<span id="footer-meta"><a href="http://synergycr.net" target="_blank">A synergycr Site</a></span>'; }
+    function scr_modify_footer_admin () { echo '<span id="footer-meta"><a href="http://lowermedia.net" target="_blank">A LowerMedia Site</a></span>'; }
     add_filter('admin_footer_text', 'scr_modify_footer_admin');
 
     //* Add theme info box into WordPress Dashboard
