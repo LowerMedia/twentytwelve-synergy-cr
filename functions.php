@@ -527,14 +527,14 @@
 #
 */
 
-    function custom_admin_logo() {
+    function scr_custom_admin_logo() {
         echo '
             <style type="text/css">
                 #wp-admin-bar-wp-logo { display:none !important; }
             </style>
         ';
     }
-    add_action('admin_head', 'custom_admin_logo');
+    add_action('admin_head', 'scr_custom_admin_logo');
 
 /*
 #
