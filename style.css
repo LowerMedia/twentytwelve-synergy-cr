@@ -164,7 +164,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 	.hreview { display:none; } /*custom.js will make this visible when the page is loaded (on pageload)*/
 
-	.page-id-11 #wpcr_respond_1 { display:block; }
+	.page-id-11 #wpcr_respond_1,
+	.page-id-15 #wpcr_respond_1 { display:block; }
 
 	.testimonial-wrap {
 		min-height: 135px;
