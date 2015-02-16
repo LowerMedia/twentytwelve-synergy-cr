@@ -421,8 +421,8 @@
     function scr_theme_info() {
       echo "
           <ul>
-          <li><strong>Developed By:</strong> synergycr.Net</li>
-          <li><strong>Website:</strong> <a href='http://synergycr.net'>www.synergycr.net</a></li>
+          <li><strong>Developed By:</strong> LowerMedia.Net</li>
+          <li><strong>Website:</strong> <a href='http://lowermedia.net'>www.lowermedia.net</a></li>
           <li><strong>Contact:</strong> <a href='mailto:pete.lower@gmail.com'>pete.lower@gmail.com</a></li>
           </ul>"
       ;
