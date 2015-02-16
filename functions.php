@@ -56,7 +56,7 @@
       $labels = array(
         'name'               => _x( $post_type_name, 'post type general name' ),
         'singular_name'      => _x( strtolower($post_type_name), 'post type singular name' ),
-        'add_new'            => _x( 'Add New', 'book' ),
+        'add_new'            => _x( 'Add New', $post_type_name ),
         'add_new_item'       => __( 'Add New '.$post_type_name),
         'edit_item'          => __( 'Edit '.$post_type_name ),
         'new_item'           => __( 'New '.$post_type_name ),
@@ -76,7 +76,8 @@
         'menu_position' => $menu_position,
         'supports'      => $supports,
         'has_archive'   => $has_archive,
-        'rewrite'       => array( 'slug' => $custom_slug )
+        'rewrite'       => array( 'slug' => $custom_slug ),
+        'exclude_from_search' => false
       );
 
       register_post_type( $post_type_name, $args ); 
