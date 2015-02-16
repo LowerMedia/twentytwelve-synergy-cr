@@ -571,7 +571,7 @@
         ;
     }
 
-    function my_filter_head() {
+    function scr_filter_head() {
         remove_action('wp_head', '_admin_bar_bump_cb');
     }
 
@@ -579,7 +579,7 @@
         if(!is_admin()) {
             if(!wp_is_mobile()) {
                 add_action('wp_head', 'scr_admin_bar_bottom');
-                add_action('get_header', 'my_filter_head');
+                add_action('get_header', 'scr_filter_head');
             }
         }
     }
