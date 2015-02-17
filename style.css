@@ -69,11 +69,13 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 
 	a {
-		color: #1bcfc9;
+		/*color: #1bcfc9;*/
+		color: #6FCCDD;
 	}
 
 	a:hover {
-		color: #1bcfc9;
+		/*color: #1bcfc9;*/
+		color: #016836;
 	}
 
 	p {
@@ -87,7 +89,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	.alignright {
 		float: right;
 	}
-
 
 /* -- BODY/WRAP -- */
 
@@ -340,6 +341,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 		.post-type-archive-therapists .entry-title,
 		.blue-rounded-header {
 			background: #6FCCDD;
+		}
+
+		.blue-rounded-header {
+			color: white;
 		}
 
 		.hreview h2,
