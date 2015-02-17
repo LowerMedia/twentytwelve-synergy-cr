@@ -38,7 +38,12 @@
 							</div>
 					<?php endforeach; ?>
 					<br />
-					<p><a href='/blog'>Click to read more about what's going on at Synergy!</a></p>
+					<p><a href='<?php 
+						if( get_option( 'show_on_front' ) == 'page' ) 
+							echo get_permalink( get_option('page_for_posts' ) );
+						else 
+							echo bloginfo('url');
+					?>'>Click to read more about what's going on at Synergy!</a></p>
 				<div><!-- .front-page-posts-holder -->
 			<?php endif; ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
