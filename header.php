@@ -57,8 +57,8 @@
 
 			<div class='desktop-scheduler scheduler-wrap'>
 				<?php 
-					echo do_shortcode( '[schedule_now_button align="center" style="button9"]' );
-					echo do_shortcode( '[schedule_now widget="overlay"]' ); 
+					echo do_shortcode( '[schedule_now_button align="center" format="schedule-btn-white-lrg-v2"]' );
+					# echo do_shortcode( '[schedule_now widget="overlay"]' ); 
 				?>
 			</div>
 
