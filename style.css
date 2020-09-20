@@ -435,3 +435,5 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 	}
 
 /* -- -- -- -- -- -- -- -- -- -- -- -- END -- -- -- -- -- -- -- -- -- -- -- -- */
+/* temporarily hide the image holder on the front page per Ginny - Pete - Sept 14 2020 */
+body.home .front-page-custom-image-holder { display: none; }
