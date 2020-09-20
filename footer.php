@@ -25,7 +25,7 @@
 <footer id="colophon" role="contentinfo">
 	<div class="site-info">
 		<h4>Synergy Massage - &copy;<?php echo date("Y"); ?></h4>
-		<h5><a href='https://www.google.com/maps?q=329+10th+Ave.+SE+Ste+%23128+Cedar+Rapids,+IA&bav=on.2,or.r_qf.&bvm=bv.85970519,d.cGU&biw=1489&bih=948&dpr=1&um=1&ie=UTF-8&sa=X&ei=ZczgVMmAAY-rogT994GABg&ved=0CAYQ_AUoAQ'>329 10th Ave. SE Ste #128 Cedar Rapids, IA</a> | <?php echo do_shortcode( '[phonenumber]' ); ?></h5>
+		<h5><a href='https://www.google.com/maps/place/Synergy+Massage+%26+Healing+Center/@41.9716968,-91.6699474,17z/data=!3m1!4b1!4m5!3m4!1s0x87e4f7412d966773:0xe3aca906087b3a0b!8m2!3d41.9719891!4d-91.6587432'>42 7th Ave. SW Suite 1B,  Cedar Rapids, IA 52404</a> | <?php echo do_shortcode( '[phonenumber]' ); ?></h5>
 		<h6><a href='http://lowermedia.net/'>A LowerMedia Site</a></h6>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
